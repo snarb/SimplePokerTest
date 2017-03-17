@@ -1,0 +1,6 @@
+c:\users\pavel konovalov\documents\visual studio 2015\Projects\SimplePoker\SimplePoker\bin\Debug\SimplePoker.exe.config
+c:\users\pavel konovalov\documents\visual studio 2015\Projects\SimplePoker\SimplePoker\obj\Debug\SimplePoker.csprojResolveAssemblyReference.cache
+c:\users\pavel konovalov\documents\visual studio 2015\Projects\SimplePoker\SimplePoker\bin\Debug\SimplePoker.exe
+c:\users\pavel konovalov\documents\visual studio 2015\Projects\SimplePoker\SimplePoker\bin\Debug\SimplePoker.pdb
+c:\users\pavel konovalov\documents\visual studio 2015\Projects\SimplePoker\SimplePoker\obj\Debug\SimplePoker.exe
+c:\users\pavel konovalov\documents\visual studio 2015\Projects\SimplePoker\SimplePoker\obj\Debug\SimplePoker.pdb
