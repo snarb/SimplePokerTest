@@ -9,7 +9,7 @@ namespace SimplePoker.Bots
 {
     public abstract class PokerPlayer
     {
-        private const long StartBalance = GameProcessor.SmallBlindSize * 1000;
+        private const long StartBalance = 1000000;
 
         public Rank Rank;
 

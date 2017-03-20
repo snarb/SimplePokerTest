@@ -13,7 +13,7 @@ namespace SimplePoker
         {
             List <PokerPlayer> players = new List<PokerPlayer>() { new RndBot(), new LinearLearningBot(), new RndBot()};
             GameProcessor proc = new GameProcessor(players);
-            proc.NextGame();
+            PokerPlayer winner = proc.NextMatch();
             //List<Dictionary<Rank, long>> stats = new List<Dictionary<Rank, long>>();
             //for (long i = 0; i < 1000000; i++)
             //{

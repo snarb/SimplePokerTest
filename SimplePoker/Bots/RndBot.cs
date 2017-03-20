@@ -9,7 +9,7 @@ namespace SimplePoker.Bots
 {
     class RndBot : PokerPlayer
     {
-        private int spliteRate = 20;
+        private int MaxBet = 20;
 
         public RndBot()
         {
@@ -17,7 +17,9 @@ namespace SimplePoker.Bots
 
         public override long MakeMove(OpponentsState opState)
         {
-            return Rnd.LongRandom(0, Balance / spliteRate);
+            long res = Rnd.Next(MaxBet);
+            //long res = Rnd.LongRandom(0, MaxBet);
+            return res;
         }
     }
 }

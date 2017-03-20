@@ -11,8 +11,8 @@ namespace SimplePoker
     public class GameProcessor
     {
         private const int MaxRoundsCount = 3;
-        public const int BigBlindSize = 10;
-        public const int SmallBlindSize = 5;
+        public const int BigBlindSize = 2;
+        public const int SmallBlindSize = 1;
         public List<PokerPlayer> Bots { get; }
 
         readonly Random _rnd = new Random();
@@ -20,7 +20,7 @@ namespace SimplePoker
         readonly OpponentsState _state = new OpponentsState();
         private int _bigBlindIndex = 0;
         private int _smallBlindIndex = 1;
-
+        private const long GamesToInMatch = 100000;
 
         public GameProcessor(List<PokerPlayer> players)
         {
@@ -35,7 +35,19 @@ namespace SimplePoker
                 index++;
 
         }
-        public void NextGame()
+
+        public PokerPlayer NextMatch()
+        {
+            for (int i = 0; i < GamesToInMatch; i++)
+            {
+                NextGame();
+            }
+
+            PokerPlayer winner = Bots.MaxBy(bot => bot.Balance);
+            return winner;
+        }
+
+        private void NextGame()
         {
             MoveBlind(ref _bigBlindIndex);
             MoveBlind(ref _smallBlindIndex);
@@ -52,16 +64,11 @@ namespace SimplePoker
             winner.Balance += totalBets;
         }
 
-        private long RoundBet(double bet)
-        {
-            return (long)(bet / SmallBlindSize);
-        }
-
         private long RunGame()
         {
             int inGameLeft = Bots.Count;
             long totalBets = 0;
-            long lastSmallBlind = 0;
+            long lastBet = 0;
 
             totalBets += BigBlindSize;
             Bots[_bigBlindIndex].Balance -= BigBlindSize;
@@ -75,22 +82,22 @@ namespace SimplePoker
                 {
                     if (bot.InGame)
                     {
-                        double bet = bot.MakeMove(_state);
-                        long smallBlindsCount = RoundBet(bet);
-                        totalBets += smallBlindsCount;
+                        long bet = bot.MakeMove(_state);
+                        totalBets += bet;
 
-                        if (smallBlindsCount < lastSmallBlind)
+                        if (bet < lastBet)
                         {
                             bot.InGame = false;
+                            inGameLeft--;
                             if (inGameLeft == 1)
                                 return totalBets;
 
                             continue;
                         }
 
-                        bot.Balance -= smallBlindsCount * SmallBlindSize;
-                        _state.Bets.Add(new Move(lastSmallBlind, bot));
-                        lastSmallBlind = smallBlindsCount;
+                        bot.Balance -= bet;
+                        _state.Bets.Add(new Move(bet, bot));
+                        lastBet = bet;
                     }
                 }
             }

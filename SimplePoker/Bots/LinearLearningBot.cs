@@ -9,6 +9,7 @@ namespace SimplePoker.Bots
     class LinearLearningBot : PokerPlayer
     {
         const double STD = 2.0;
+        private const double BoostRate = 5.0;
         readonly double _std;
 
 
@@ -20,8 +21,9 @@ namespace SimplePoker.Bots
         public override long MakeMove(OpponentsState opState)
         {
             double rndVal = Rnd.NextGaussian((double)Rank, _std);
-            double val = rndVal * Balance / Enum.GetNames(typeof(Rank)).Length;
-            return (long)val;
+            rndVal = Math.Max(0, rndVal);
+            double val = rndVal * BoostRate / Enum.GetNames(typeof(Rank)).Length;
+            return  (long)val;
         }
     }
 }
