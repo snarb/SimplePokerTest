@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace SimplePoker.Bots
 {
-    class LinearLearningBot : BaseBot
+    class LinearLearningBot : PokerPlayer
     {
         const double STD = 2.0;
         readonly double _std;
 
 
-        public LinearLearningBot(Hand hand, double std = STD) : base(hand)
+        public LinearLearningBot(double std = STD)
         {
             _std = std;
         }
 
         public override long MakeMove(OpponentsState opState)
         {
-            double rndVal = Rnd.NextGaussian((double)Hand.Rank, _std);
-            double val = rndVal * Hand.Balance / Enum.GetNames(typeof(Rank)).Length;
+            double rndVal = Rnd.NextGaussian((double)Rank, _std);
+            double val = rndVal * Balance / Enum.GetNames(typeof(Rank)).Length;
             return (long)val;
         }
     }

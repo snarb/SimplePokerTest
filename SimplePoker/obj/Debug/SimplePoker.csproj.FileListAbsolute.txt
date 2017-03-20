@@ -4,3 +4,5 @@ c:\users\pavel konovalov\documents\visual studio 2015\Projects\SimplePoker\Simpl
 c:\users\pavel konovalov\documents\visual studio 2015\Projects\SimplePoker\SimplePoker\bin\Debug\SimplePoker.pdb
 c:\users\pavel konovalov\documents\visual studio 2015\Projects\SimplePoker\SimplePoker\obj\Debug\SimplePoker.exe
 c:\users\pavel konovalov\documents\visual studio 2015\Projects\SimplePoker\SimplePoker\obj\Debug\SimplePoker.pdb
+C:\Users\Pavel Konovalov\documents\visual studio 2015\Projects\SimplePoker\SimplePoker\bin\Debug\MoreLinq.dll
+C:\Users\Pavel Konovalov\documents\visual studio 2015\Projects\SimplePoker\SimplePoker\bin\Debug\MoreLinq.xml

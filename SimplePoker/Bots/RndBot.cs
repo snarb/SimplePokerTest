@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 namespace SimplePoker.Bots
 {
-    class RndBot : BaseBot
+    class RndBot : PokerPlayer
     {
-        public RndBot(Hand hand) : base(hand)
+        private int spliteRate = 20;
+
+        public RndBot()
         {
         }
 
         public override long MakeMove(OpponentsState opState)
         {
-            return Rnd.LongRandom(0, Hand.Balance);
+            return Rnd.LongRandom(0, Balance / spliteRate);
         }
     }
 }

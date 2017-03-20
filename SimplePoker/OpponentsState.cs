@@ -8,6 +8,6 @@ namespace SimplePoker
 {
     public class OpponentsState
     {
-        Dictionary<Hand, long> Bets = new Dictionary<Hand, long>();
+        public List<Move> Bets { get; } = new List<Move>();
     }
 }
